@@ -1,0 +1,55 @@
+<div class="container">
+  <nav class="navbar bg-light mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand">APP METEO</a>
+    </div>
+  </nav>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default"
+      >Latitude</span
+    >
+    <input
+      type="text"
+      class="form-control"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default"
+      name="latitude"
+      id="latitude"
+      [(ngModel)]="jsonIn.latitude"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default"
+      >Longitude</span
+    >
+    <input
+      type="text"
+      class="form-control"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default"
+      name="longitude"
+      id="longitude"
+      [(ngModel)]="jsonIn.longitude"
+    />
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-outline-primary"
+    [routerLink]="'/meteo/' + jsonIn.latitude + '/' + jsonIn.longitude"
+  >
+    Search
+  </button>
+
+  <div class="citiesCards">
+    <div *ngFor="let city of defaultCoordates" class="citiesCard-SM">
+      <button
+        class="btn btn-outline-primary mt-3"
+        [routerLink]="'/meteo/' + city.latitude + '/' + city.longitude"
+      >
+        {{ city.location }}
+      </button>
+    </div>
+  </div>
+</div>
